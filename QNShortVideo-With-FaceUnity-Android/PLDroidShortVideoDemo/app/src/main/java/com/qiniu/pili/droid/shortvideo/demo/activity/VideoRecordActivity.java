@@ -142,7 +142,6 @@ public class VideoRecordActivity extends Activity implements PLRecordStateListen
 
         mShortVideoRecorder = new PLShortVideoRecorder();
         mShortVideoRecorder.setRecordStateListener(this);
-        mShortVideoRecorder.setFocusListener(this);
 
         mRecordSpeed = RECORD_SPEED_ARRAY[2];
         mSpeedTextView = (TextView) findViewById(R.id.normal_speed_text);
@@ -220,6 +219,7 @@ public class VideoRecordActivity extends Activity implements PLRecordStateListen
                 ToastUtils.s(this, getString(R.string.toast_draft_recover_fail));
             }
         }
+
         mShortVideoRecorder.setRecordSpeed(mRecordSpeed);
         mSectionProgressBar.setProceedingSpeed(mRecordSpeed);
         mSectionProgressBar.setTotalTime(this, mRecordSetting.getMaxRecordDuration());
@@ -241,6 +241,7 @@ public class VideoRecordActivity extends Activity implements PLRecordStateListen
             }
         });
 
+        mShortVideoRecorder.setFocusListener(this);
         mShortVideoRecorder.setVideoFilterListener(new PLVideoFilterListener() {
 
             @Override
